@@ -1,0 +1,118 @@
+Solution to problem 1: The given code seems to be perfectly correct.
+
+
+Solution to problem 2: The given javascript may not work because there is an inline css which persists, and hence the 
+javascript doesn't have the desired effect. This can be corrected in the following ways:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Element</title>
+    <style>
+        /* Initially hide the target element */
+        #target {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="toggleElement()">Toggle Element</button>
+    <div id="target">This is the target element.</div>
+
+    <script>
+        function toggleElement() {
+            var element = document.getElementById("target");
+            if (element.style.display === "none") {
+                element.style.display = "block";
+            } else {
+                element.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+Solution to problem 3: The margin auto CSS property was used to align the text to the center of the page but it only worked
+horizontally to align the text vertically also ita not possible eith the margin auto so an alternative way could be using
+the display flex property inside the body to align the container
+
+The changes are made as follows:
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centered Container</title>
+<style>
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+width: 50%;
+background-color: #f0f0f0;
+padding: 20px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Centered Container</h1>
+<p>This container should be centered on the page.</p>
+</div>
+</body>
+</html>
+
+
+Solution to problem 4: The give javascript code snippet seems to be functioning properly. However, there are no apparent
+errors in this code in terms of functionality or syntax.
+
+
+Solution to problem 5: In this code the boxes were not separated properly and were not aligned properly inside the container
+this can be rectified in the following ways:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Styling Debugging Exercise</title>
+<style>
+.container {
+display: flex;
+justify-content: space-between;
+width: 50%;
+margin: auto;
+background-color: #c8c3c3;
+padding: 20px;
+}
+
+.box {
+width: 100px;
+height: 100px;
+background-color: #007bff;
+color: #ffffff;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="box">Box 1</div>
+<div class="box">Box 2</div>
+<div class="box">Box 3</div>
+</div>
+</body>
+</html>
