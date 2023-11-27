@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            background-color:rgb(74, 196, 180);
+        }
+
+        .Form {
+            margin: auto;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+            height: 650px;
+            align-items: center;
+            box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.25);
+        }
+
+        .fields {
+            display: flex;
+            box-sizing: border-box;
+            width: 100%;
+            background-color: rgb(232, 242, 244);
+            flex-direction: column;
+            justify-content: space-evenly;
+            row-gap: 30px;
+            padding: 25px;
+        }
+ 
+        header {
+            font-size: 30px;
+            box-sizing: border-box;
+            width: 100%;
+            background-color: rgb(214, 238, 243);
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            padding-left: 40px;
+            padding-top: 35px;
+            padding-bottom: 35px;
+            border-bottom: 1px solid rgb(158, 208, 220);
+        }
+
+        input {
+            height: 25px;
+            opacity: 0.6;
+        }
+
+        select {
+            height: 30px;
+            opacity:  0.6;
+        }
+
+
+        #btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(219, 229, 231);
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+        }
+
+        button {
+            width: 80px;
+            height: 30px;
+            background-color: rgb(67, 85, 122);
+            color: antiquewhite;
+            font-size: 15px;
+        }
+
+        #btn :hover {
+            cursor: pointer;
+            transform: scale(1.05);
+            background-color: rgb(49, 68, 105);
+        }
+
+        #tcs {
+            width: 100%;
+            background-color: rgb(232, 242, 244);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid rgb(194, 205, 207);
+        }
+
+    </style>
+
+</head>
+<body>
+    <forms>
+        <div class="Form">
+            <header>Registration Form</header>
+            <div class="fields">
+                <input required="" placeholder="First Name">
+                <input placeholder="Last Name">
+                <input placeholder="Email Address" type="email">
+                <input placeholder="Password" type="password" id="password">
+                <input placeholder="Confirm Password" type="password" id="confirmPassword">
+                <input placeholder="Date of Birth (dd/mm/yyyy)" type="datetime" id="dob">
+                <select>
+                    <option selected disabled>Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+            </div>
+            <div id="tcs">
+                <input type="checkbox"><label>Agree to the Terms and Conditions</label>
+            </div>
+            <div id="btn">
+                <button type="button" onclick="validateForm()">Submit</button>
+            </div>
+        </div>
+    </forms>
+
+    <script>
+        function validateForm() {
+            const form = document.querySelector('.Form');
+            const password1 = form.querySelector('#password').value;
+            const confirmPassword1 = form.querySelector('#confirmPassword').value;
+    
+            let firstName = form.querySelector('input[placeholder="First Name"]').value;
+            let lastName = form.querySelector('input[placeholder="Last Name"]').value;
+            let email = form.querySelector('input[type="email"]').value;
+            let password = form.querySelector('input[type="password"]').value;
+            let confirmPassword = form.querySelector('input[placeholder="Confirm Password"]').value;
+            let dob = form.querySelector('input[placeholder="Date of Birth (dd/mm/yyyy)"]').value;
+            let gender = form.querySelector('select').value;
+            let termsCheckbox = form.querySelector('input[type="checkbox"]').checked;
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match. Please re-enter your password.');
+                return;
+            }
+    
+            if (firstName === '' || lastName === '' || email === '' || password === '' || confirmPassword === '' || dob === '' || gender === 'Gender' || !termsCheckbox) {
+                alert('Please fill in all fields and agree to the Terms and Conditions.');
+                return;
+            }
+
+            const dobRegex = /^\d{2}\/\d{2}\/\d{4}$/;
+            if (!dob.match(dobRegex)) {
+                alert('Date of Birth should be in the format dd/mm/yyyy.');
+                return;
+            }
+    
+            console.log('First Name:', firstName);
+            console.log('Last Name:', lastName);
+            console.log('Email:', email);
+            console.log('Password:', password);
+            console.log('Confirm Password:', confirmPassword);
+            console.log('Date of Birth:', dob);
+            console.log('Gender:', gender);
+            console.log('Terms and Conditions Agreement:', termsCheckbox ? 'Agreed' : 'Not Agreed');
+    
+            alert('Form submitted successfully!');
+    
+            form.querySelector('input[placeholder="First Name"]').value = '';
+            form.querySelector('input[placeholder="Last Name"]').value = '';
+            form.querySelector('input[type="email"]').value = '';
+            form.querySelector('input[type="password"]').value = '';
+            form.querySelector('input[placeholder="Confirm Password"]').value = '';
+            form.querySelector('input[placeholder="Date of Birth (dd/mm/yyyy)"]').value = '';
+            form.querySelector('select').value = 'Gender';
+            form.querySelector('input[type="checkbox"]').checked = false;
+            
+        }
+    </script>
+
+</body>
+</html>
